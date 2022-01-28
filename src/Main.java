@@ -601,8 +601,8 @@ public class Main {
 
         System.out.println("\nObrigada por usar os nossos serviços");
 
-        Conta.salvarContas("./contas", contas);
-        Agencia.salvarAgencias("./agencias", agencias);
+        Conta.salvarContas("./contas/", contas);
+        Agencia.salvarAgencias("./agencias/", agencias);
 
     }
 }
