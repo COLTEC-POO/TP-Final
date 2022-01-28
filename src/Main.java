@@ -90,7 +90,7 @@ public class Main {
                                     contaC.setNumeroDaConta(conta);
                                 }
 
-                                System.out.println("Defina uma senha de 6 dígitos:");
+                                System.out.println("Defina uma senha numerica de 6 dígitos:");
                                 int senha = sc.nextInt();
                                 contaC.setSenha(senha);
 
@@ -158,7 +158,7 @@ public class Main {
                                     contaP.setNumeroDaConta(conta);
                                 }
 
-                                System.out.println("Defina uma senha de 6 dígitos:");
+                                System.out.println("Defina uma senha numerica de 6 dígitos:");
                                 senha = sc.nextInt();
                                 contaP.setSenha(senha);
 
@@ -225,7 +225,7 @@ public class Main {
                                     contaUni.setNumeroDaConta(conta);
                                 }
 
-                                System.out.println("Defina uma senha de 6 dígitos:");
+                                System.out.println("Defina uma senha numerica de 6 dígitos:");
                                 senha = sc.nextInt();
                                 contaUni.setSenha(senha);
 
@@ -305,7 +305,7 @@ public class Main {
                                     contaC.setNumeroDaConta(conta);
                                 }
 
-                                System.out.println("Defina uma senha de 6 dígitos:");
+                                System.out.println("Defina uma senha numerica de 6 dígitos:");
                                 int senha = sc.nextInt();
                                 contaC.setSenha(senha);
 
@@ -371,7 +371,7 @@ public class Main {
                                     contaP.setNumeroDaConta(conta);
                                 }
 
-                                System.out.println("Defina uma senha de 6 dígitos:");
+                                System.out.println("Defina uma senha numerica de 6 dígitos:");
                                 senha = sc.nextInt();
                                 contaP.setSenha(senha);
 
@@ -402,85 +402,84 @@ public class Main {
             System.out.println("Digite o numero da conta:");
             int numeroDaConta = sc.nextInt();
             if (Conta.existe(numeroDaConta, contas)){
-                for (Conta contaAtual: contas) {
-                    if (contaAtual.getNumeroDaConta() == numeroDaConta) {
-                        System.out.println("Digite a senha numerica de 6 dígitos");
-                        int senha = sc.nextInt();
-                        if (senha == contaAtual.getSenha()) {
-                            int opcao = 0;
-                            do {
-                                System.out.println("Digite qual ação deseja realizar:");
-                                System.out.println("(1) Depósito.");
-                                System.out.println("(2) Saque.");
-                                System.out.println("(3) Transferência.");
-                                System.out.println("(4) Excluir Conta.");
-                                System.out.println("(5) Logout.");
-                                opcao = sc.nextInt();
-                                if ((opcao == 1) || (opcao == 2) || (opcao == 3) || (opcao == 4) || (opcao == 5)) {
-                                    switch (opcao) {
-                                        case 1:
-                                            System.out.println("Digite o valor do depósito:");
-                                            double valor = sc.nextDouble();
-                                            try {
-                                                contaAtual.depositar(valor);
-                                            } catch (ValorNegativoException e) {
-                                                System.out.println(e.getMessage());
-                                            }
-                                            System.out.println("Saldo: R$ "+ contaAtual.getSaldo());
-                                            break;
-                                        case 2:
-                                            System.out.println("Digite o valor do saque:");
-                                            valor = sc.nextDouble();
-                                            try{
-                                                contaAtual.sacar(valor);
-                                            }catch (ValorNegativoException e ){
-                                                System.out.println(e.getMessage());
-                                            }catch (SemLimiteException e){
-                                                System.out.println(e.getMessage());
-                                            }
-                                            System.out.println("Saldo: R$ "+ contaAtual.getSaldo());
-                                            break;
-                                        case 3:
-                                            System.out.println("Digite o numero da conta de destino.");
-                                            int contaDestino = sc.nextInt();
-                                            if (Conta.existe(contaDestino, contas)){
-                                                for (Conta atualDestino: contas){
-                                                    if (atualDestino.getNumeroDaConta() == contaDestino) {
-                                                        System.out.println("Digite o valor do transferencia:");
-                                                        sc.nextLine();
-                                                        valor = sc.nextDouble();
-                                                        try {
-                                                            contaAtual.transferir(atualDestino, valor);
+                Conta contaAtual = Conta.retornaContaIgual(numeroDaConta, contas);
+                    System.out.println("Digite a senha numerica de 6 dígitos");
+                    int senha = sc.nextInt();
+                    if (senha == contaAtual.getSenha()) {
+                        int opcao = 0;
+                        do {
+                            System.out.println("Digite qual ação deseja realizar:");
+                            System.out.println("(1) Depósito.");
+                            System.out.println("(2) Saque.");
+                            System.out.println("(3) Transferência.");
+                            System.out.println("(4) Excluir Conta.");
+                            System.out.println("(5) Logout.");
+                            opcao = sc.nextInt();
+                            if ((opcao == 1) || (opcao == 2) || (opcao == 3) || (opcao == 4) || (opcao == 5)) {
+                                switch (opcao) {
+                                    case 1:
+                                        System.out.println("Digite o valor do depósito:");
+                                        double valor = sc.nextDouble();
+                                        try {
+                                            contaAtual.depositar(valor);
+                                        } catch (ValorNegativoException e) {
+                                            System.out.println(e.getMessage());
+                                        }
+                                        System.out.println("Saldo: R$ " + contaAtual.getSaldo());
+                                        break;
+                                    case 2:
+                                        System.out.println("Digite o valor do saque:");
+                                        valor = sc.nextDouble();
+                                        try {
+                                            contaAtual.sacar(valor);
+                                        } catch (ValorNegativoException e) {
+                                            System.out.println(e.getMessage());
+                                        } catch (SemLimiteException e) {
+                                            System.out.println(e.getMessage());
+                                        }
+                                        System.out.println("Saldo: R$ " + contaAtual.getSaldo());
+                                        break;
+                                    case 3:
+                                        System.out.println("Digite o numero da conta de destino.");
+                                        int contaDestino = sc.nextInt();
+                                        if (Conta.existe(contaDestino, contas)) {
+                                            for (Conta atualDestino : contas) {
+                                                if (atualDestino.getNumeroDaConta() == contaDestino) {
+                                                    System.out.println("Digite o valor do transferencia:");
+                                                    sc.nextLine();
+                                                    valor = sc.nextDouble();
+                                                    try {
+                                                        contaAtual.transferir(atualDestino, valor);
 
-                                                        }catch (ValorNegativoException e ){
-                                                            System.out.println(e.getMessage());
-                                                        }catch (SemLimiteException e){
-                                                            System.out.println(e.getMessage());
-                                                        }
-                                                        System.out.println("Saldo: R$ " + contaAtual.getSaldo());
+                                                    } catch (ValorNegativoException e) {
+                                                        System.out.println(e.getMessage());
+                                                    } catch (SemLimiteException e) {
+                                                        System.out.println(e.getMessage());
                                                     }
+                                                    System.out.println("Saldo: R$ " + contaAtual.getSaldo());
                                                 }
-                                            }else{
-                                                throw new ContaInexistenteException("A conta digitada não existe.");
                                             }
-                                            break;
-                                        case 4:
-                                            contaAtual.exluirConta(contaAtual, contas, contaAtual.getAgencia());
-                                            System.out.println("Conta removida com sucesso.");
-                                            break;
-                                        case 5:
-                                            break;
-                                    }
-                                } else {
-                                    System.out.println("A opção digitada é inválida!\n");
+                                        } else {
+                                            throw new ContaInexistenteException("A conta digitada não existe.");
+                                        }
+                                        break;
+                                    case 4:
+                                        contaAtual.exluirConta(contaAtual, contas, contaAtual.getAgencia());
+                                        System.out.println("Conta removida com sucesso.");
+                                        opcao = 5;
+                                        break;
+                                    case 5:
+                                        break;
                                 }
-                            } while (opcao != 5);
 
-                        } else {
-                            System.out.println("Senha incorreta.");
-                        }
+                            } else {
+                                System.out.println("A opção digitada é inválida!\n");
+                            }
+                        } while (opcao != 5);
+
+                    } else {
+                        System.out.println("Senha incorreta.");
                     }
-                }
             }else{
                 System.out.println("Conta digitada não existe.");
             }
@@ -527,12 +526,9 @@ public class Main {
 
                                 if (!Agencia.existe(deletarAgencia, agencias)){
                                     throw new AgenciaInexistenteException("Agência inexistente.");
-                                }
-
-                                for (Agencia atual: agencias){
-                                    if (atual.getNumeroDaAgencia() == deletarAgencia){
-                                        agencias.remove(atual);
-                                    }
+                                }else {
+                                    Agencia agenciaADeletar = Agencia.retornaAgenciaIgual(deletarAgencia,agencias);
+                                    agenciaADeletar.excluirAgencia(agenciaADeletar, agencias, contas);
                                 }
                                 break;
 
@@ -603,7 +599,7 @@ public class Main {
 
         }while (opcao != 4);
 
-        System.out.println("Obrigada por usar os nossos serviços");
+        System.out.println("\nObrigada por usar os nossos serviços");
 
         Conta.salvarContas("./contas", contas);
         Agencia.salvarAgencias("./agencias", agencias);

@@ -41,6 +41,14 @@ public class Agencia implements Serializable {
         }
         return false;
     }
+    static Agencia retornaAgenciaIgual(int numeroDaAgencia, List<Agencia> agencias) {
+        for (Agencia atual : agencias) {
+            if (numeroDaAgencia == atual.numeroDaAgencia) {
+                return atual;
+            }
+        }
+        return null;
+    }
 
     void excluirAgencia(Agencia agencia, List<Agencia> agencias, List<Conta> contas) {
 
@@ -48,11 +56,7 @@ public class Agencia implements Serializable {
             atual.exluirConta(atual, contas, agencia);
         }
 
-        for (Agencia atual : agencias) {
-            if (atual.equals(agencia)) {
-                agencias.remove(atual);
-            }
-        }
+        agencias.remove(agencia);
 
         System.out.println("Agência removida com sucesso.");
 
