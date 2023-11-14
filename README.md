@@ -2,9 +2,9 @@
 
 **Até quatro integrantes**
 
-**Data de apresentação: 15/12/2022**
+**Data de apresentação: 04/12/2023**
 
-**Valor: 20 pontos**
+**Valor: 30 pontos**
 
 ## Trabalho Integrador
 
@@ -23,24 +23,8 @@ Seu grupo será avaliado com base nos seguintes critérios:
 - Uso dos mecanismos de tratamento de exceção
 - Implementação de classes modelo para representação dos dados
 - Implementação de DAOs para comunicação com banco de dados
-- Implementação de classes responsáveis pela interface gráfica do programa
 - Uso de collections para manipular conjunto de dados
 - Uso dos mecanismos de Herança/Polimorfismo ao longo da implementação do sistema
-
-## Cronograma
-
-Esse é o primeiro sistema de informação que vocês estão desenvolvendo.
-Ele é de média/grande complexidade e multidisciplinar.
-Portanto, é indispensável planejamento e disciplina na sua implementação.
-Nós teremos seis aulas até apresentação final (~23hrs de aula!), e é de suma importância que esse tempo seja aproveitado o máximo possível.
-O cronograma abaixo é apenas um planejamento de como eu me organizaria para implementar o trabalho, entendam como sugestão.
-
-- 17/11: CRUD+Relatório: decidir quais dados serão implementados e exibidos; Login: protótipo interface gráfica + modelo
-- 24/11: Login: implementação e teste; CRUD#1: protótipo das interfaces gráficas + modelo
-- 01/12: CRUD#1: implementação e teste; CRUD#2: protótipo das interfaces gráficas + modelo
-- 02/12: CRUD#2: implementação e teste; Relatório: protótipo da interface gráfica + obtenção dos dados (início)
-- 08/12: Relatório: obtenção dos dados (fim); Teste Geral
-- 15/12: Apresentação do trabalho completo
 
 ## Algumas dicas
 
